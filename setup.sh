@@ -1,7 +1,6 @@
 #!/bin/bash
 
 MYBASH="$(dirname "$(realpath "$0")")/sync_bash.sh";
-
 if [ -f $MYBASH ]; then
     $MYBASH;
 else
@@ -9,7 +8,6 @@ else
 fi
 
 MYVIM="$(dirname "$(realpath "$0")")/sync_vim.sh";
-
 if [ -f $MYVIM ]; then
     $MYVIM;
 else
@@ -17,9 +15,15 @@ else
 fi
 
 MYGIT="$(dirname "$(realpath "$0")")/sync_git.sh";
-
 if [ -f $MYGIT ]; then
     $MYGIT;
 else
     printf "${MYGIT} not found. \n\n";
+fi
+
+MYTMUX="$(dirname "$(realpath "$0")")/sync_tmux_conf.sh";
+if [ -f $MYTMUX ]; then
+    $MYTMUX;
+else
+    printf "${MYTMUX} not found. \n\n";
 fi
