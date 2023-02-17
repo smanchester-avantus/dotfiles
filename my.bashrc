@@ -14,6 +14,7 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias python=python3
+alias tf=terraform
 #!/bin/bash
 iatest=$(expr index "$-" i)
 
