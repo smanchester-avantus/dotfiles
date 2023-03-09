@@ -15,6 +15,7 @@ alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias python=python3
 alias tf=terraform
+alias fup="poetry lock && poetry install"
 #!/bin/bash
 iatest=$(expr index "$-" i)
 
