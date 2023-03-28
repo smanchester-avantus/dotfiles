@@ -20,7 +20,6 @@
     dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
     hb = log --graph --pretty=format:'%Cred%h%Creset - %s %C(bold blue)<%an>%Creset %Cgreen(%cr) %C(yellow)%d%Creset' --abbrev-commit --date=relative --branches
     co = checkout
-    cob = checkout --track origin/mainline -b
     cor = checkout --
     diffc = diff --cached
     stl = stash list
@@ -28,6 +27,7 @@
     str = stash remove
     cam = commit -am
     rb = "!sh -c 'git rebase -i HEAD~$1' -" # Have to use a shell to do a git alias with an argument
+    count = "!sh -c 'git rev-list --left-right --count $(git rev-parse --abbrev-ref HEAD)...main' -"
     st = status
     setu = branch --set-upstream-to
     b = branch
