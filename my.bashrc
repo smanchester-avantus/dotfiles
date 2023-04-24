@@ -19,6 +19,8 @@ alias fup="poetry lock && poetry install"
 alias rfup="poetry lock && poetry install && poetry update && poetry run pytest . && poetry run black . && poetry run mypy ."
 alias pr="poetry run"
 alias prp="poetry run python"
+alias pi="poetry install"
+alias pl="poetry lock"
 #!/bin/bash
 iatest=$(expr index "$-" i)
 
