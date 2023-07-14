@@ -604,7 +604,8 @@ trim()
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
+alias cpu="[ -f '/proc/stat' ] && grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}' || echo 'N/A'"
+alias getpyenv="pyenv local &> /tmp/pyenv_stat && cat /tmp/pyenv_stat || echo 'NOT SET'"
 function __setprompt
 {
 	local LAST_COMMAND=$? # Must come first!
@@ -675,7 +676,12 @@ function __setprompt
 	PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])-" # Time
 
 	# CPU
-	PS1+="(\[${MAGENTA}\]CPU $(cpu)%"
+	PS1+="(\[${MAGENTA}\]CPU $(cpu)"
+
+	PS1+="\[${DARKGRAY}\])-"
+
+	# pyenv
+	PS1+="(\[${LIGHTBLUE}\]pyenv: $(getpyenv)"
 
 	# Jobs
 	# PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]\j"
